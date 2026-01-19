@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CrmBl.Model
 {
-    internal class Check
+    public class Check
     {
         public int CheckId { get; set;  }
 

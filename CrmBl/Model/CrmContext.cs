@@ -2,7 +2,7 @@
 
 namespace CrmBl.Model
 {
-    internal class CrmContext : DbContext
+    public class CrmContext : DbContext
     {
         public CrmContext() : base("CrmConnection") {}
         public DbSet<Check> Checks { get; set; }

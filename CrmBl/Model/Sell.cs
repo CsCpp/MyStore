@@ -1,7 +1,7 @@
 ﻿
 namespace CrmBl.Model
 {
-    internal class Sell
+    public class Sell
     {
         public int SellId { get; set; }
         public int ChekId { get; set; }
