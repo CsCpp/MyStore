@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace CrmUi
 {
@@ -19,17 +21,31 @@ namespace CrmUi
         {
             InitializeComponent();
         }
+        public ProductForm(Product product) : this()
+        {
+            Product = product;
+            textBox1.Text = Product.Name;
+            numericUpDown1.Value = Product.Price;
+            numericUpDown2.Value = Product.Count;
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Product = new Product()
-            {
-                Name = textBox1.Text,
-                Price = numericUpDown1.Value,
-                Count = Convert.ToInt32(numericUpDown2.Value)
+            var p = Product ?? new Product();
 
-            };
+            p.Name = textBox1.Text;
+            p.Price = numericUpDown1.Value;
+            p.Count = Convert.ToInt32(numericUpDown2.Value);
+            
+            Product = p;
+            
             Close();
+        }
+
+        private void ProductForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
