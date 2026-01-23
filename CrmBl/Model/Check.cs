@@ -12,7 +12,7 @@ namespace CrmBl.Model
 
         public virtual Customer Customer { get; set;  }
 
-        public int SelerId { get; set; }
+        public int SellerId { get; set; }
 
         public virtual Seller Seller { get; set; }
 
