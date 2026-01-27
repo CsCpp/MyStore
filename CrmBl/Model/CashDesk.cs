@@ -22,6 +22,7 @@ namespace CrmBl.Model
             Seller = seller;
             Queue = new Queue<Cart> ();
             IsModel = true;
+            MaxQueueLenght = 12;
         }
 
         public void Enqueue(Cart cart)
@@ -53,6 +54,7 @@ namespace CrmBl.Model
                     CustomerId = cart.Customer.CustomerId, 
                     Customer = cart.Customer,
                     Created = DateTime.Now
+                    
                 };
                 if(!IsModel)
                 {

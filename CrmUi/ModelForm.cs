@@ -26,11 +26,22 @@ namespace CrmUi
             {
                 var box = new CashBoxView(model.CashDesks[i], i, 26, (26 * i)+26);
                 cashBoxes.Add(box);
-                Controls.Add(box.Label);
-                Controls.Add(box.NumericUpDown);
+                Controls.Add(box.CashDeskName);
+                Controls.Add(box.Price);
+                Controls.Add(box.QueueLeght);
+                Controls.Add(box.LeaveCustomersCount);
+
             }
 
+            model.Start();
+
             
+        }
+
+        private void ModelForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            model.Stop();
+
         }
     }
 }

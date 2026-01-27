@@ -34,7 +34,7 @@ namespace CrmBl.Model
         public void Start()
         {
             isWorking = true;
-           Task.Run(()=> CreateCarts(10, 1000));
+           Task.Run(()=> CreateCarts(10, 300));
             // создаем коллекцию задач:
             var cashDeskTasks = CashDesks.Select(c => new Task(() => CashDeskWork(c, 100)));
             // перебираем и запускаем каждую задачу
@@ -72,7 +72,7 @@ namespace CrmBl.Model
                     {
                         cart.Add(product);
                     }
-                    var cash = CashDesks[rnd.Next(CashDesks.Count - 1)];
+                    var cash = CashDesks[rnd.Next(CashDesks.Count )];
                     cash.Enqueue(cart);
                 }
                 Thread.Sleep(sleep);
