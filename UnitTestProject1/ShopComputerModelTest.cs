@@ -2,6 +2,7 @@
 using System;
 using  CrmBl.Model;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace CrmBl.Model.Tests
 {
@@ -17,6 +18,8 @@ namespace CrmBl.Model.Tests
 
             //act
             model.Start();
+
+            Thread.Sleep(10000);
 
             //assert
           
