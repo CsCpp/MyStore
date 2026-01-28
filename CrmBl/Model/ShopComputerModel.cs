@@ -16,6 +16,8 @@ namespace CrmBl.Model
         public List<Check> Checks { get; set; } = new List<Check>();
         public List<Sell> Sells { get; set; } = new List<Sell>();
         public Queue<Seller> Sellers { get; set; } = new Queue<Seller>();
+        public int CustomerSpeed { get; set; } = 300;
+        public int CashDeskSpeed { get; set; } = 300;
         public ShopComputerModel ()
         {
            var sellers = Generator.GetNewSeller(20);
@@ -34,9 +36,9 @@ namespace CrmBl.Model
         public void Start()
         {
             isWorking = true;
-           Task.Run(()=> CreateCarts(10, 300));
+           Task.Run(()=> CreateCarts(10, CustomerSpeed));
             // создаем коллекцию задач:
-            var cashDeskTasks = CashDesks.Select(c => new Task(() => CashDeskWork(c, 100)));
+            var cashDeskTasks = CashDesks.Select(c => new Task(() => CashDeskWork(c, CashDeskSpeed)));
             // перебираем и запускаем каждую задачу
             foreach (var task in cashDeskTasks)
             {

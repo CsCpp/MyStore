@@ -14,6 +14,8 @@ namespace CrmBl.Model
         public int ExitCustomer { get; set; }
         public bool IsModel { get; set; }
         public int count => Queue.Count;
+        
+
         public event EventHandler<Check> CheckClosed;
 
         public CashDesk (int number, Seller seller)
