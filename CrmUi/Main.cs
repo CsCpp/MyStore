@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrmBl.Model;
 
@@ -7,11 +9,14 @@ namespace CrmUi
     public partial class Main : Form
     {
         CrmContext db;
-
+        Cart cart;
+        Customer customer;
+      
         public Main()
         {
             InitializeComponent();
             db = new CrmContext();
+            cart = new Cart(customer);
         }
 
          private void ProductToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,13 +74,39 @@ namespace CrmUi
                 db.Products.Add(form.Product);
                 db.SaveChanges();
             }
-
         }
 
         private void modelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new ModelForm();
             form.Show();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            Task.Run(()=>
+            {
+                StoreList.Invoke((Action)delegate
+                {
+                    StoreList.Items.AddRange(db.Products.ToArray());
+                    UpdateCart();
+                });
+            });
+        }
+        private void StoreList_DoubleClick(object sender, EventArgs e)
+        {
+           if( StoreList.SelectedItem is Product product)
+            {
+                cart.Add(product);
+                CartList.Items.Add(product);
+                UpdateCart();
+            }
+        }
+        private void UpdateCart()
+        {
+                CartList.Items.Clear();
+                CartList.Items.AddRange(cart.GetAll().ToArray());
+                label1.Text = $"ИТОГО: {cart.Price}";
         }
     }
 }
