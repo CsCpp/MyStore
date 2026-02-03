@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="CrmBl/CrmBl.csproj" Id="0d40aa60-5415-45a0-a1f6-86761a6ae45f" />
-  <Project Path="CrmUi/CrmUi.csproj" Id="43963bb8-5799-4fc0-a5f3-3353622e1bec" />
+  <Project Path="CrmUi/CrmUi.csproj" Id="43963bb8-5799-4fc0-a5f3-3353622e1bec">
+    <BuildDependency Project="UnitTestProject1/CrmBlTest.csproj" />
+  </Project>
   <Project Path="UnitTestProject1/CrmBlTest.csproj" Id="f225710e-4bb2-4938-960f-23e2bea4abcd" />
 </Solution>

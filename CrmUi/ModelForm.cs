@@ -35,7 +35,7 @@ namespace CrmUi
         private void ModelForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             model.Stop();
-
+            this.Dispose();
         }
 
         private void ModelForm_Load(object sender, EventArgs e)
@@ -54,10 +54,12 @@ namespace CrmUi
             model.CashDeskSpeed = (int)numericUpDown2.Value;
         }
 
-        private void ModelForm_FormClosed(object sender, FormClosedEventArgs e)
+   
+
+        private void buttonStop_Click(object sender, EventArgs e)
         {
             model.Stop();
-
+            this.Dispose();
         }
     }
 }
