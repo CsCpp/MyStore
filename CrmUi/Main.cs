@@ -11,12 +11,17 @@ namespace CrmUi
         CrmContext db;
         Cart cart;
         Customer customer;
+        CashDesk cashDesk;
       
         public Main()
         {
             InitializeComponent();
             db = new CrmContext();
             cart = new Cart(customer);
+            cashDesk = new CashDesk(1, db.Sellers.FirstOrDefault(), db)
+            {
+                IsModel = false
+            };
         }
 
          private void ProductToolStripMenuItem_Click(object sender, EventArgs e)
@@ -107,6 +112,45 @@ namespace CrmUi
                 CartList.Items.Clear();
                 CartList.Items.AddRange(cart.GetAll().ToArray());
                 label1.Text = $"ИТОГО: {cart.Price}";
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var form = new Login();
+            form.ShowDialog();
+            if(form.DialogResult == DialogResult.OK)
+            {
+                var tempCustomer = db.Customers.FirstOrDefault(c => c.Name.Equals(form.Customer.Name));
+                if (tempCustomer != null)
+                {
+                    customer = tempCustomer;
+                  
+                }
+                else
+                {
+                    db.Customers.Add(form.Customer);
+                    db.SaveChanges();
+                    customer = form.Customer;
+                }
+                cart.Customer = customer;
+            }
+            linkLabel1.Text = customer.Name;
+        }
+
+        private void buttonCloseCheck_Click(object sender, EventArgs e)
+        {
+            if(customer != null)
+            {
+                cashDesk.Enqueue(cart);
+               var price = cashDesk.Dequeue();
+                CartList.Items.Clear();
+                cart = new Cart(customer);
+                MessageBox.Show("Вы оплатили: " + price+ " руб.", "Успешная покупка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Гость не может совершать покупки!", "Авторизуйтесь.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

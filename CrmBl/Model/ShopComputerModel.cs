@@ -11,6 +11,7 @@ namespace CrmBl.Model
         Generator Generator = new Generator();
         Random rnd = new Random();
         bool isWorking = false;
+        
         public List<CashDesk> CashDesks { get; set; } = new List<CashDesk>();
         public List<Cart> Carts { get; set; } = new List<Cart>();
         public List<Check> Checks { get; set; } = new List<Check>();
@@ -29,7 +30,7 @@ namespace CrmBl.Model
             }
             for (int i=0; i<3; i++)
             {
-                CashDesks.Add(new CashDesk(CashDesks.Count, Sellers.Dequeue()));
+                CashDesks.Add(new CashDesk(CashDesks.Count, Sellers.Dequeue(), null));
             }
 
         }

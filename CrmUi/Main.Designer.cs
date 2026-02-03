@@ -41,6 +41,8 @@
             this.StoreList = new System.Windows.Forms.ListBox();
             this.CartList = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonCloseCheck = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,24 +148,47 @@
             this.CartList.FormattingEnabled = true;
             this.CartList.Location = new System.Drawing.Point(261, 27);
             this.CartList.Name = "CartList";
-            this.CartList.Size = new System.Drawing.Size(244, 277);
+            this.CartList.Size = new System.Drawing.Size(244, 251);
             this.CartList.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(263, 311);
+            this.label1.Location = new System.Drawing.Point(398, 286);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "ИТОГО:";
+            // 
+            // buttonCloseCheck
+            // 
+            this.buttonCloseCheck.Location = new System.Drawing.Point(263, 306);
+            this.buttonCloseCheck.Name = "buttonCloseCheck";
+            this.buttonCloseCheck.Size = new System.Drawing.Size(242, 23);
+            this.buttonCloseCheck.TabIndex = 4;
+            this.buttonCloseCheck.Text = "Оплатить";
+            this.buttonCloseCheck.UseVisualStyleBackColor = true;
+            this.buttonCloseCheck.Click += new System.EventHandler(this.buttonCloseCheck_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(453, 7);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(47, 13);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Привет!";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 344);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.buttonCloseCheck);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CartList);
             this.Controls.Add(this.StoreList);
@@ -194,6 +219,8 @@
         private System.Windows.Forms.ListBox StoreList;
         private System.Windows.Forms.ListBox CartList;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonCloseCheck;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

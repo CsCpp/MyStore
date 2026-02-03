@@ -1,9 +1,5 @@
 ﻿using CrmBl.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CrmUi
@@ -56,7 +52,7 @@ namespace CrmUi
 
         private void CashDesk_CheckClosed(object sender, Check e)
         {
-           Price.Invoke((Action)delegate 
+           Price?.Invoke((Action)delegate 
            { 
                Price.Value += e.Price;
                QueueLeght.Value = cashDesk.count;
